@@ -1,0 +1,36 @@
+.header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  padding: 10px 0;
+  background-color: #fff;
+
+  .headerlxmain {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+
+    .headerlogo {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .headerlinksflx {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+
+      a {
+        padding: 12px 20px;
+        border-radius: 50px;
+        background-color: #e5e5e5;
+        font-size: 18px;
+        font-weight: 600;
+        line-height: 22px;
+        color: #000000d2;
+      }
+    }
+  }
+}
