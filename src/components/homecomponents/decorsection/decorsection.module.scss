@@ -88,23 +88,23 @@
         .decorsectionflx2left {
           position: absolute;
           top: -122px;
-          right: -222px;
+          right: -122px;
           max-width: 444px;
           height: 444px;
-          box-shadow: 5px 5px 20px 0 rgba(0,0,0,0.15);
+          box-shadow: 5px 5px 20px 0 rgba(0, 0, 0, 0.15);
         }
       }
-      
+
       .decorsectionflx2leftcontentbox {
         border-left: 10px solid #666666;
         padding: 20px 20px 20px 40px;
 
         p {
-            font-size: 18px;
-            font-weight: 700;
-            line-height: 29px;
-            color: #808080;
-            font-family: "Open Sans", sans-serif;
+          font-size: 18px;
+          font-weight: 700;
+          line-height: 29px;
+          color: #808080;
+          font-family: "Open Sans", sans-serif;
         }
       }
     }

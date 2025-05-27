@@ -1,0 +1,107 @@
+.realtimesectionmain {
+  padding: 60px 0;
+
+  .realtimeflxmain {
+    display: flex;
+
+    .realtimeflxleft {
+      max-width: 456px;
+      position: relative;
+      z-index: 2;
+      padding-bottom: 100px;
+      padding-left: 70px;
+
+      .realtimeflxleftimg {
+        height: 659px;
+        width: 583px;
+      }
+
+      .relatimeleftshape {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 237px;
+        height: 237px;
+      }
+    }
+
+    .realtimeflxright {
+      max-width: 662px;
+      width: 100%;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      &::before {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        content: "";
+        width: 100%;
+        height: 334px;
+        background-color: #c1b688;
+      }
+
+      &::after {
+        position: absolute;
+        top: 0;
+        right: 0;
+        content: "";
+        width: 228px;
+        height: 228px;
+        border-radius: 50%;
+        background-color: #e6e1cb;
+      }
+
+      .realtimerightbox {
+        background-color: #fff;
+        max-width: 462px;
+        position: relative;
+        z-index: 3;
+        margin: 0 auto;
+        padding: 30px 40px 30px 35px;
+
+        h4 {
+          font-size: 48px;
+          font-weight: 400;
+          line-height: 53px;
+          color: #111111;
+          font-family: "Montserrat", sans-serif;
+        }
+
+        p {
+          margin-top: 20px;
+          font-size: 16px;
+          font-weight: 500;
+          line-height: 26px;
+          color: #111111;
+          font-family: "Open Sans", sans-serif;
+        }
+
+        .learnbutton {
+          margin-top: 15px;
+          border: 2px solid #c1b688;
+          border-radius: 50px;
+          padding: 15px 45px;
+          background-color: transparent;
+          cursor: pointer;
+          font-size: 16px;
+          font-weight: 500;
+          line-height: 20px;
+          letter-spacing: 2px;
+          color: #fff;
+          text-transform: uppercase;
+          background-color: #c1b688;
+          transition: 0.4s ease-in-out;
+
+          &:hover {
+            background-color: #fff;
+            color: #c1b688;
+          }
+        }
+      }
+    }
+  }
+}
