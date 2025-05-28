@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Sofaicon() {
   return (
-    <svg class="u-svg-content" viewBox="0 0 512 512" id="svg-c30b">
+    <svg viewBox="0 0 512 512" id="svg-c30b">
       <g>
         <g>
           <g>

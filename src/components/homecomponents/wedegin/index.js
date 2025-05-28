@@ -40,8 +40,8 @@ export default function Wedesign() {
             <h2>We design beautiful hotels</h2>
           </div>
           <div className={styles.wedeigncardsgrd}>
-            {Wedesigncard.map((i) => (
-              <div className={styles.wedeigncard}>
+            {Wedesigncard.map((i, index) => (
+              <div className={styles.wedeigncard} key={index}>
                 <div className={styles.cardiconmain}>
                   <div className={styles.cardicon}>{i.Icon}</div>
                 </div>

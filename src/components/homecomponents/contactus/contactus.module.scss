@@ -1,0 +1,175 @@
+.contactussectionmain {
+  padding: 60px 0;
+  background-image: linear-gradient(
+    to bottom,
+    #e5e5e5 0%,
+    #e5e5e5 20%,
+    #fff 20%,
+    #fff 100%
+  );
+
+  .contactussectiomflx {
+    display: flex;
+    align-items: end;
+
+    .contactussectiomflxleft {
+      max-width: 630px;
+      width: 100%;
+      background-color: #fff;
+      position: relative;
+      z-index: 2;
+      box-shadow: 5px 5px 20px 0 rgba(0, 0, 0, 0.4);
+      padding: 60px 40px 143px 40px;
+
+      h5 {
+        font-size: 48px;
+        font-weight: 400;
+        line-height: 53px;
+        color: #111111;
+        font-family: "Montserrat", sans-serif;
+        text-align: center;
+      }
+
+      .contactusleftform {
+        margin: 20px 32px 0 32px;
+        padding: 10px;
+
+        form {
+          .contactinputmain {
+            padding-right: 28px;
+            margin-bottom: 28px;
+
+            input {
+              padding: 10px 12px;
+              background-color: transparent;
+              border: none;
+              width: 100%;
+              color: #7f7f7f;
+              border-bottom: 2px solid #111111;
+              outline: none;
+              font-size: 18px;
+              font-weight: 400;
+              line-height: 22px;
+              text-transform: capitalize;
+              font-family: "Open Sans", sans-serif;
+            }
+
+            textarea {
+              padding: 10px 12px;
+              background-color: transparent;
+              border: none;
+              width: 100%;
+              color: #7f7f7f;
+              border-bottom: 2px solid #111111;
+              outline: none;
+              height: 124px;
+              resize: none;
+              font-size: 18px;
+              font-weight: 400;
+              line-height: 22px;
+              text-transform: capitalize;
+              font-family: "Open Sans", sans-serif;
+            }
+          }
+          .submitbutton {
+            border-radius: 50px;
+            background-color: #c1b688;
+            padding: 14px 30px;
+            width: 100%;
+            text-transform: uppercase;
+            border: none;
+            outline: none;
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 22px;
+            color: #fff;
+            cursor: pointer;
+            font-family: "Open Sans", sans-serif;
+            transition: 0.4s ease-in-out;
+
+            &:hover {
+              background-color: #000;
+            }
+          }
+        }
+      }
+    }
+
+    .contactussectiomflxright {
+      margin-bottom: 200px;
+      max-width: 510px;
+      position: relative;
+
+      .contactusimage {
+        width: 814px;
+        height: 554px;
+        position: relative;
+        z-index: 1;
+        margin-left: -304px;
+      }
+
+      .realtimeimage {
+        position: absolute;
+        top: 70%;
+        right: 54px;
+        transform: translateY(-50%);
+
+        img {
+          width: 579px;
+          height: 437px;
+        }
+      }
+    }
+  }
+
+  .contactusdetailsmain {
+    max-width: 961px;
+    margin-left: auto;
+    background-color: #c1b688;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    position: relative;
+    z-index: 2;
+    margin-top: -40px;
+
+    .contactusdetailsbox {
+        padding: 45px 30px 35px;
+
+        .contactusdetailsboxtitle {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+
+            svg {
+                width: 22px;
+                height: 22px;
+
+                path {
+                    fill: #fff;
+                }
+            }
+
+            span {
+                font-size: 20px;
+                font-weight: 700;
+                line-height: 24px;
+                color: #fff;
+                text-transform: uppercase;
+                font-family: "Montserrat", sans-serif;
+            }
+        }
+
+        .contactusdetailsboxbody {
+            margin-top: 20px;
+
+            p {
+                font-size: 16px;
+                font-weight: 500;
+                line-height: 26px;
+                color: #fff;
+                font-family: "Open Sans", sans-serif;
+            }
+        }
+    }
+  }
+}

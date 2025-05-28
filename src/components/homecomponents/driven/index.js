@@ -97,8 +97,8 @@ export default function Driven() {
               </p>
             </div>
             <div className={styles.drivencardflx}>
-                {Drivencard.map((i) => (
-                    <div className={styles.drivencard}>
+                {Drivencard.map((i, index) => (
+                    <div className={styles.drivencard} key={index}>
                         <Image src={i.img} alt={i.img} />
                         <div className={styles.drivencardcontent}>
                             <h6>{i.title}</h6>
