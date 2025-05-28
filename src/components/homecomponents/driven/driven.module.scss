@@ -1,102 +1,3 @@
-// .herobanner {
-//   padding: 60px 0;
-
-//   .container {
-//     max-width: 1650px;
-//     margin: 0 auto;
-//     padding: 0 20px;
-//   }
-
-//   .herobannerlayout {
-//     border-radius: 40px;
-//     overflow: hidden;
-//     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-
-//     .herobannertitle {
-//       text-align: center;
-//       margin-bottom: 50px;
-
-//       h1 {
-//         font-size: 80px;
-//         font-weight: 600;
-//         line-height: 100px;
-//         color: #1e4b82;
-//       }
-
-//       p {
-//         font-size: 22px;
-//         font-weight: 500;
-//         line-height: 30px;
-//         color: #638aa3;
-//         max-width: 600px;
-//         margin: 30px auto 0 auto;
-//       }
-
-//       .explorebutton {
-//         background-color: #1e5392;
-//         border: 1px solid #1e5392;
-//         padding: 15px 40px;
-//         margin-top: 30px;
-//         cursor: pointer;
-//         color: #fff;
-//         border-radius: 50px;
-//         font-size: 18px;
-//         font-weight: 600;
-//         line-height: 22px;
-
-//         &:hover {
-//           color: #1e5392;
-//           background-color: #fff;
-//         }
-//       }
-//     }
-//     .herobannergrdmain {
-//       display: grid;
-//       grid-template-columns: 150px 250px 1fr 250px 150px;
-//       align-items: end;
-//       gap: 30px;
-
-//       .herobannergrdsmallleft {
-//         img {
-//           border-radius: 0 20px 0 0;
-//         }
-//       }
-
-//       .herobannergrdsmallright {
-//         img {
-//           border-radius: 20px 0 0 0;
-//         }
-//       }
-
-//       .herobannergrdsmall {
-//         img {
-//           height: 300px;
-//         }
-//       }
-
-//       .herobannergrdbig {
-//         display: flex;
-//         flex-direction: column;
-//         gap: 30px;
-
-//         img {
-//             height: 200px;
-//         }
-
-//         .herobannergrdbigflx {
-//           display: grid;
-//           grid-template-columns: repeat(2,1fr);
-//           gap: 30px;
-//         }
-//       }
-
-//       img {
-//         border-radius: 20px;
-//       }
-//     }
-//   }
-// }
-
 .drivenmain {
   padding: 60px 0;
   background-image: linear-gradient(
@@ -146,11 +47,11 @@
         border-radius: 6px;
 
         &:nth-child(3n + 2) {
-            margin-top: 160px;
+          margin-top: 160px;
         }
 
         &:last-child {
-            margin-top: 286px;
+          margin-top: 286px;
         }
 
         img {

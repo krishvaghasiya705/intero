@@ -1,4 +1,5 @@
-import React from "react";
+"use client"
+import React, { useEffect, useRef } from "react";
 import styles from "./contactus.module.scss";
 import Image from "next/image";
 import contactusimage from "@/assets/image/contactusimage.jpg";
@@ -6,14 +7,113 @@ import realtimeimage from "@/assets/image/lineingimage.png";
 import Callicon from "@/assets/icons/callicon";
 import Locationpinicon from "@/assets/icons/locationpinicon";
 import Clockicon from "@/assets/icons/clockicon";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 export default function Contactus() {
+  const sectionRef = useRef(null);
+  const formRef = useRef(null);
+  const imageRef = useRef(null);
+  const detailsRef = useRef(null);
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    
+    // Form animation with scroll progress
+    gsap.fromTo(
+      formRef.current,
+      {
+        opacity: 0,
+        y: 100,
+        scale: 0.9,
+      },
+      {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        duration: 1.2,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: formRef.current,
+          start: "top 85%",
+          end: "top 50%",
+          scrub: 1,
+          toggleActions: "play none none reverse",
+        },
+      }
+    );
+
+    // Image animation with parallax effect
+    gsap.fromTo(
+      imageRef.current,
+      {
+        opacity: 0,
+        x: 100,
+        scale: 0.95,
+      },
+      {
+        opacity: 1,
+        x: 0,
+        scale: 1,
+        duration: 1.2,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: imageRef.current,
+          start: "top 85%",
+          end: "top 50%",
+          scrub: 1,
+          toggleActions: "play none none reverse",
+        },
+      }
+    );
+
+    // Contact details animation with stagger
+    const detailsBoxes = detailsRef.current.children;
+    gsap.fromTo(
+      detailsBoxes,
+      {
+        opacity: 0,
+        y: 50,
+        scale: 0.95,
+      },
+      {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        duration: 1,
+        stagger: 0.15,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: detailsRef.current,
+          start: "top 85%",
+          end: "top 70%",
+          scrub: 1,
+          toggleActions: "play none none reverse",
+        },
+      }
+    );
+
+    // Add a subtle floating animation to the realtime image
+    gsap.to(imageRef.current.querySelector(`.${styles.realtimeimage}`), {
+      y: 20,
+      duration: 2,
+      repeat: -1,
+      yoyo: true,
+      ease: "power1.inOut",
+    });
+
+    // Cleanup function
+    return () => {
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    };
+  }, []);
+
   return (
     <>
-      <div className={styles.contactussectionmain}>
+      <div className={styles.contactussectionmain} ref={sectionRef}>
         <div className="container">
           <div className={styles.contactussectiomflx}>
-            <div className={styles.contactussectiomflxleft}>
+            <div className={styles.contactussectiomflxleft} ref={formRef}>
               <h5>Contact Us</h5>
               <div className={styles.contactusleftform}>
                 <form>
@@ -35,7 +135,7 @@ export default function Contactus() {
                 </form>
               </div>
             </div>
-            <div className={styles.contactussectiomflxright}>
+            <div className={styles.contactussectiomflxright} ref={imageRef}>
               <Image
                 src={contactusimage}
                 alt="contactusimage"
@@ -46,7 +146,7 @@ export default function Contactus() {
               </div>
             </div>
           </div>
-          <div className={styles.contactusdetailsmain}>
+          <div className={styles.contactusdetailsmain} ref={detailsRef}>
             <div className={styles.contactusdetailsbox}>
               <div className={styles.contactusdetailsboxtitle}>
                 <Callicon />
