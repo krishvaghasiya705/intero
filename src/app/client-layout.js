@@ -1,7 +1,12 @@
 "use client"
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
-import initBarba from "@/utils/transitions";
+import dynamic from 'next/dynamic';
+
+// Dynamically import Barba initialization with no SSR
+const BarbaWrapper = dynamic(() => import('@/components/BarbaWrapper'), {
+  ssr: false
+});
 
 export default function ClientLayout({ children }) {
   const [isClient, setIsClient] = useState(false);
@@ -9,13 +14,6 @@ export default function ClientLayout({ children }) {
 
   useEffect(() => {
     setIsClient(true);
-    // Initialize Barba after component mount
-    if (typeof window !== 'undefined') {
-      // Small delay to ensure DOM is ready
-      setTimeout(() => {
-        initBarba();
-      }, 0);
-    }
   }, []);
 
   // During SSR or initial client render, return children without Barba wrapper
@@ -27,10 +25,8 @@ export default function ClientLayout({ children }) {
   const namespace = pathname === '/' ? 'home' : pathname.slice(1);
 
   return (
-    <div data-barba="wrapper">
-      <div data-barba="container" data-barba-namespace={namespace}>
-        {children}
-      </div>
-    </div>
+    <BarbaWrapper namespace={namespace}>
+      {children}
+    </BarbaWrapper>
   );
 } 
