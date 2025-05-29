@@ -1,10 +1,14 @@
 "use client"
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import barba from '@barba/core';
 import gsap from 'gsap';
 
 export default function BarbaWrapper({ children, namespace }) {
+  const [isMounted, setIsMounted] = useState(false);
+
   useEffect(() => {
+    setIsMounted(true);
+
     // Initialize Barba
     barba.init({
       wrapper: '[data-barba="wrapper"]',
@@ -145,8 +149,17 @@ export default function BarbaWrapper({ children, namespace }) {
     `;
     document.head.appendChild(style);
 
-    // Prevent default link behavior and handle clicks
+    // Handle CSS loading during page transitions
+    barba.hooks.before(() => {
+      // Remove any existing transition overlay
+      const existingOverlay = document.querySelector('.transition-overlay');
+      if (existingOverlay) {
+        existingOverlay.remove();
+      }
+    });
+
     barba.hooks.after(() => {
+      // Scroll to top after page transition
       window.scrollTo(0, 0);
     });
 
@@ -162,6 +175,11 @@ export default function BarbaWrapper({ children, namespace }) {
       }
     };
   }, []); // Empty dependency array since we only want to initialize once
+
+  // During SSR or initial client render, return children without Barba wrapper
+  if (!isMounted) {
+    return <div>{children}</div>;
+  }
 
   return (
     <div data-barba="wrapper">
