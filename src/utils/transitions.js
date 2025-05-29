@@ -3,6 +3,11 @@ import gsap from 'gsap';
 
 // Initialize Barba
 const initBarba = () => {
+  // Check if we're in a browser environment
+  if (typeof window === 'undefined' || typeof document === 'undefined') {
+    return;
+  }
+
   // Create transition elements
   const createTransitionElements = () => {
     if (!document.querySelector('.transition-overlay')) {
