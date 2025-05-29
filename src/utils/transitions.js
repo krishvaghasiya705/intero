@@ -10,6 +10,8 @@ const initBarba = () => {
 
   // Create transition elements
   const createTransitionElements = () => {
+    if (typeof document === 'undefined') return;
+    
     if (!document.querySelector('.transition-overlay')) {
       const overlay = document.createElement('div');
       overlay.className = 'transition-overlay';
@@ -19,6 +21,8 @@ const initBarba = () => {
 
   // Page transition animation
   const pageTransition = () => {
+    if (typeof gsap === 'undefined') return;
+    
     const tl = gsap.timeline();
     
     tl.to('.transition-overlay', {
@@ -32,6 +36,8 @@ const initBarba = () => {
 
   // Reset transition elements
   const resetTransition = () => {
+    if (typeof gsap === 'undefined') return;
+    
     gsap.set('.transition-overlay', {
       y: '-100%'
     });
@@ -39,6 +45,8 @@ const initBarba = () => {
 
   // Animate page elements
   const animatePageElements = () => {
+    if (typeof gsap === 'undefined') return;
+    
     const tl = gsap.timeline();
     
     // Animate all headings
@@ -81,7 +89,7 @@ const initBarba = () => {
   };
 
   // Initialize Barba with proper checks
-  if (typeof window !== 'undefined') {
+  if (typeof window !== 'undefined' && typeof barba !== 'undefined') {
     barba.init({
       wrapper: '[data-barba="wrapper"]',
       container: '[data-barba="container"]',
@@ -137,7 +145,7 @@ const initBarba = () => {
         {
           namespace: 'home',
           beforeEnter() {
-            // Add specific animations for home page
+            if (typeof gsap === 'undefined') return;
             gsap.from('.wedesignmain', {
               y: 20,
               opacity: 0,
@@ -150,7 +158,7 @@ const initBarba = () => {
         {
           namespace: 'believe',
           beforeEnter() {
-            // Add specific animations for believe page
+            if (typeof gsap === 'undefined') return;
             gsap.from('.believeherobanner', {
               y: 20,
               opacity: 0,
@@ -163,7 +171,7 @@ const initBarba = () => {
         {
           namespace: 'dietplan',
           beforeEnter() {
-            // Add specific animations for diet plan page
+            if (typeof gsap === 'undefined') return;
             gsap.from('.dietplanherobanner', {
               y: 20,
               opacity: 0,
@@ -176,7 +184,7 @@ const initBarba = () => {
         {
           namespace: 'studio',
           beforeEnter() {
-            // Add specific animations for studio page
+            if (typeof gsap === 'undefined') return;
             gsap.from('.yogastudioherobanner', {
               y: 20,
               opacity: 0,
@@ -189,7 +197,7 @@ const initBarba = () => {
         {
           namespace: 'philosophy',
           beforeEnter() {
-            // Add specific animations for philosophy page
+            if (typeof gsap === 'undefined') return;
             gsap.from('.philosophyherobanner', {
               y: 20,
               opacity: 0,
@@ -202,7 +210,7 @@ const initBarba = () => {
         {
           namespace: 'travel',
           beforeEnter() {
-            // Add specific animations for travel page
+            if (typeof gsap === 'undefined') return;
             gsap.from('.travelherobanner', {
               y: 20,
               opacity: 0,
@@ -216,32 +224,35 @@ const initBarba = () => {
     });
 
     // Add styles for transition elements
-    const style = document.createElement('style');
-    style.textContent = `
-      .transition-overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: #000;
-        z-index: 999;
-        pointer-events: none;
-        transform: translateY(-100%);
-        will-change: transform;
-      }
-      [data-barba="container"] {
-        position: relative;
-        z-index: 1;
-        will-change: opacity, transform;
-      }
-    `;
-    document.head.appendChild(style);
+    if (typeof document !== 'undefined') {
+      const style = document.createElement('style');
+      style.textContent = `
+        .transition-overlay {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: #000;
+          z-index: 999;
+          pointer-events: none;
+          transform: translateY(-100%);
+          will-change: transform;
+        }
+        [data-barba="container"] {
+          position: relative;
+          z-index: 1;
+          will-change: opacity, transform;
+        }
+      `;
+      document.head.appendChild(style);
+    }
 
     // Prevent default link behavior and handle clicks
     barba.hooks.after(() => {
-      // Reinitialize any necessary event listeners or components
-      window.scrollTo(0, 0);
+      if (typeof window !== 'undefined') {
+        window.scrollTo(0, 0);
+      }
     });
   }
 };
