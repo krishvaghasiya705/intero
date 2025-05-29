@@ -11,10 +11,14 @@ export default function ClientLayout({ children }) {
     setIsClient(true);
     // Initialize Barba after component mount
     if (typeof window !== 'undefined') {
-      initBarba();
+      // Small delay to ensure DOM is ready
+      setTimeout(() => {
+        initBarba();
+      }, 0);
     }
   }, []);
 
+  // During SSR or initial client render, return children without Barba wrapper
   if (!isClient) {
     return <div>{children}</div>;
   }

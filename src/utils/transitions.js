@@ -12,7 +12,8 @@ const initBarba = () => {
   const createTransitionElements = () => {
     if (typeof document === 'undefined') return;
     
-    if (!document.querySelector('.transition-overlay')) {
+    const existingOverlay = document.querySelector('.transition-overlay');
+    if (!existingOverlay) {
       const overlay = document.createElement('div');
       overlay.className = 'transition-overlay';
       document.body.appendChild(overlay);
@@ -45,45 +46,57 @@ const initBarba = () => {
 
   // Animate page elements
   const animatePageElements = () => {
-    if (typeof gsap === 'undefined') return;
+    if (typeof gsap === 'undefined' || typeof document === 'undefined') return;
     
     const tl = gsap.timeline();
     
     // Animate all headings
-    tl.from('h1, h2, h3, h4, h5, h6', {
-      y: 20,
-      opacity: 0,
-      duration: 0.6,
-      stagger: 0.1,
-      ease: 'power2.out'
-    });
+    const headings = document.querySelectorAll('h1, h2, h3, h4, h5, h6');
+    if (headings.length > 0) {
+      tl.from(headings, {
+        y: 20,
+        opacity: 0,
+        duration: 0.6,
+        stagger: 0.1,
+        ease: 'power2.out'
+      });
+    }
 
     // Animate paragraphs
-    tl.from('p', {
-      y: 15,
-      opacity: 0,
-      duration: 0.5,
-      stagger: 0.05,
-      ease: 'power2.out'
-    }, '-=0.3');
+    const paragraphs = document.querySelectorAll('p');
+    if (paragraphs.length > 0) {
+      tl.from(paragraphs, {
+        y: 15,
+        opacity: 0,
+        duration: 0.5,
+        stagger: 0.05,
+        ease: 'power2.out'
+      }, '-=0.3');
+    }
 
     // Animate images
-    tl.from('img', {
-      scale: 0.95,
-      opacity: 0,
-      duration: 0.5,
-      stagger: 0.05,
-      ease: 'power2.out'
-    }, '-=0.3');
+    const images = document.querySelectorAll('img');
+    if (images.length > 0) {
+      tl.from(images, {
+        scale: 0.95,
+        opacity: 0,
+        duration: 0.5,
+        stagger: 0.05,
+        ease: 'power2.out'
+      }, '-=0.3');
+    }
 
     // Animate buttons and links
-    tl.from('button, a', {
-      y: 10,
-      opacity: 0,
-      duration: 0.4,
-      stagger: 0.05,
-      ease: 'power2.out'
-    }, '-=0.2');
+    const buttons = document.querySelectorAll('button, a');
+    if (buttons.length > 0) {
+      tl.from(buttons, {
+        y: 10,
+        opacity: 0,
+        duration: 0.4,
+        stagger: 0.05,
+        ease: 'power2.out'
+      }, '-=0.2');
+    }
 
     return tl;
   };
@@ -103,11 +116,13 @@ const initBarba = () => {
           createTransitionElements();
 
           // Animate out current page
-          await gsap.to(data.current.container, {
-            opacity: 0,
-            duration: 0.3,
-            ease: 'power2.inOut'
-          });
+          if (data.current.container) {
+            await gsap.to(data.current.container, {
+              opacity: 0,
+              duration: 0.3,
+              ease: 'power2.inOut'
+            });
+          }
 
           // Play transition animation
           await pageTransition();
@@ -119,16 +134,18 @@ const initBarba = () => {
           resetTransition();
 
           // Animate in new page
-          await gsap.fromTo(data.next.container,
-            { 
-              opacity: 0
-            },
-            { 
-              opacity: 1,
-              duration: 0.4,
-              ease: 'power2.out'
-            }
-          );
+          if (data.next.container) {
+            await gsap.fromTo(data.next.container,
+              { 
+                opacity: 0
+              },
+              { 
+                opacity: 1,
+                duration: 0.4,
+                ease: 'power2.out'
+              }
+            );
+          }
 
           // Animate out transition overlay
           await gsap.to('.transition-overlay', {
@@ -145,66 +162,81 @@ const initBarba = () => {
         {
           namespace: 'home',
           beforeEnter() {
-            if (typeof gsap === 'undefined') return;
-            gsap.from('.wedesignmain', {
-              y: 20,
-              opacity: 0,
-              duration: 0.6,
-              ease: 'power2.out',
-              delay: 0.1
-            });
+            if (typeof gsap === 'undefined' || typeof document === 'undefined') return;
+            const element = document.querySelector('.wedesignmain');
+            if (element) {
+              gsap.from(element, {
+                y: 20,
+                opacity: 0,
+                duration: 0.6,
+                ease: 'power2.out',
+                delay: 0.1
+              });
+            }
           }
         },
         {
           namespace: 'believe',
           beforeEnter() {
-            if (typeof gsap === 'undefined') return;
-            gsap.from('.believeherobanner', {
-              y: 20,
-              opacity: 0,
-              duration: 0.6,
-              ease: 'power2.out',
-              delay: 0.1
-            });
+            if (typeof gsap === 'undefined' || typeof document === 'undefined') return;
+            const element = document.querySelector('.believeherobanner');
+            if (element) {
+              gsap.from(element, {
+                y: 20,
+                opacity: 0,
+                duration: 0.6,
+                ease: 'power2.out',
+                delay: 0.1
+              });
+            }
           }
         },
         {
           namespace: 'dietplan',
           beforeEnter() {
-            if (typeof gsap === 'undefined') return;
-            gsap.from('.dietplanherobanner', {
-              y: 20,
-              opacity: 0,
-              duration: 0.6,
-              ease: 'power2.out',
-              delay: 0.1
-            });
+            if (typeof gsap === 'undefined' || typeof document === 'undefined') return;
+            const element = document.querySelector('.dietplanherobanner');
+            if (element) {
+              gsap.from(element, {
+                y: 20,
+                opacity: 0,
+                duration: 0.6,
+                ease: 'power2.out',
+                delay: 0.1
+              });
+            }
           }
         },
         {
           namespace: 'studio',
           beforeEnter() {
-            if (typeof gsap === 'undefined') return;
-            gsap.from('.yogastudioherobanner', {
-              y: 20,
-              opacity: 0,
-              duration: 0.6,
-              ease: 'power2.out',
-              delay: 0.1
-            });
+            if (typeof gsap === 'undefined' || typeof document === 'undefined') return;
+            const element = document.querySelector('.yogastudioherobanner');
+            if (element) {
+              gsap.from(element, {
+                y: 20,
+                opacity: 0,
+                duration: 0.6,
+                ease: 'power2.out',
+                delay: 0.1
+              });
+            }
           }
         },
         {
           namespace: 'philosophy',
           beforeEnter() {
-            if (typeof gsap === 'undefined') return;
-            gsap.from('.philosophyherobanner', {
-              y: 20,
-              opacity: 0,
-              duration: 0.6,
-              ease: 'power2.out',
-              delay: 0.1
-            });
+            if (typeof gsap === 'undefined' || typeof document === 'undefined') return;
+            const element = document.querySelector('.philosophyherobanner');
+            if (element) {
+              gsap.from(element, {
+                y: 20,
+                opacity: 0,
+                duration: 0.6,
+                ease: 'power2.out',
+                delay: 0.1
+              });
+            }
           }
         },
         {
