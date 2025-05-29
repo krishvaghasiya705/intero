@@ -1,4 +1,3 @@
-"use client"
 import Footer from "@/common/footer";
 import Header from "@/common/header";
 import "./globals.scss";
