@@ -9,7 +9,7 @@ import Interiordesigners from "@/components/homecomponents/interiordesigners";
 
 export default function Home() {
   return (
-    <>
+    <div data-barba="container" data-barba-namespace="home">
       <Herobanner />
       <Wedesign />
       <Decorsection />
@@ -18,6 +18,6 @@ export default function Home() {
       <Interiordesign />
       <Wecreate />
       <Interiordesigners />
-    </>
+    </div>
   );
 }

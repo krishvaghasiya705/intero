@@ -159,6 +159,58 @@ const initBarba = () => {
               delay: 0.1
             });
           }
+        },
+        {
+          namespace: 'dietplan',
+          beforeEnter() {
+            // Add specific animations for diet plan page
+            gsap.from('.dietplanherobanner', {
+              y: 20,
+              opacity: 0,
+              duration: 0.6,
+              ease: 'power2.out',
+              delay: 0.1
+            });
+          }
+        },
+        {
+          namespace: 'studio',
+          beforeEnter() {
+            // Add specific animations for studio page
+            gsap.from('.yogastudioherobanner', {
+              y: 20,
+              opacity: 0,
+              duration: 0.6,
+              ease: 'power2.out',
+              delay: 0.1
+            });
+          }
+        },
+        {
+          namespace: 'philosophy',
+          beforeEnter() {
+            // Add specific animations for philosophy page
+            gsap.from('.philosophyherobanner', {
+              y: 20,
+              opacity: 0,
+              duration: 0.6,
+              ease: 'power2.out',
+              delay: 0.1
+            });
+          }
+        },
+        {
+          namespace: 'travel',
+          beforeEnter() {
+            // Add specific animations for travel page
+            gsap.from('.travelherobanner', {
+              y: 20,
+              opacity: 0,
+              duration: 0.6,
+              ease: 'power2.out',
+              delay: 0.1
+            });
+          }
         }
       ]
     });
