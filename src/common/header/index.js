@@ -15,10 +15,11 @@ export default function Header() {
             </Link>
 
             <div className={style.headerlinksflx}>              
-              <Link href={"/"}>Home</Link>
-              <Link href={"/"}>Services</Link>
-              <Link href={"/"}>Our Work</Link>
-              <Link href={"/"}>About</Link>
+              <Link href={"/travel"}>Travel</Link>
+              <Link href={"/philosophy"}>Our Philosophy</Link>
+              <Link href={"/dietplan"}>Diet Plan</Link>
+              <Link href={"/believe"}>Believe</Link>
+              <Link href={"/studio"}>Yoga Studio</Link>
             </div>
           </div>
         </div>

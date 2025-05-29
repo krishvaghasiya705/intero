@@ -6,7 +6,6 @@ import Wedesign from "@/components/homecomponents/wedegin";
 import Interiordesign from "@/components/homecomponents/interiordesign";
 import Wecreate from "@/components/homecomponents/wecreate";
 import Interiordesigners from "@/components/homecomponents/interiordesigners";
-import Contactus from "@/components/homecomponents/contactus";
 
 export default function Home() {
   return (
@@ -19,7 +18,6 @@ export default function Home() {
       <Interiordesign />
       <Wecreate />
       <Interiordesigners />
-      <Contactus />
     </>
   );
 }

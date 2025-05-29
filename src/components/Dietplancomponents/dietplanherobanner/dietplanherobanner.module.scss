@@ -1,0 +1,88 @@
+.dietplanherobannermain {
+  padding: 60px 0;
+  background-image: linear-gradient(
+    to bottom,
+    #fff 0%,
+    #fff 30%,
+    #c1b688 30%,
+    #c1b688 45%,
+    #fff 45%,
+    #fff 100%
+  );
+
+  .dietplanherobanner {
+    display: flex;
+    gap: 70px;
+    align-items: center;
+
+    .dietplanherobannerleft {
+      max-width: 515px;
+
+      .dietplanimage1 {
+        height: 565px;
+      }
+
+      h1 {
+        margin-top: 26px;
+        font-size: 60px;
+        font-weight: 400;
+        line-height: 66px;
+        color: #111111;
+        font-family: "Montserrat", sans-serif;
+      }
+
+      p {
+        margin-top: 20px;
+        font-size: 20px;
+        font-weight: 400;
+        line-height: 40px;
+        color: #111111;
+        font-family: "Open Sans", sans-serif;
+      }
+
+      .readmorebutton {
+        border: 1px solid #c1b688;
+        background-color: #c1b688;
+        color: #fff;
+        padding: 15px 45px;
+        margin-top: 35px;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 20px;
+        letter-spacing: 2px;
+        cursor: pointer;
+        text-transform: uppercase;
+        transition: .4s ease-in-out;
+
+        &:hover {
+          background-color: #111111;
+        }
+      }
+    }
+
+    .dietplanherobannerright {
+      max-width: 555px;
+
+      .dietplanherobannerrightflx {
+        margin-bottom: 30px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        align-items: end;
+        gap: 30px;
+
+        .dietplanimage2 {
+          height: 420px;
+        }
+        
+        .dietplanimage3 {
+          height: 323px;
+        }
+      }
+
+      .dietplanimage4 {
+        max-width: 438px;
+        height: 292px;
+      }
+    }
+  }
+}
