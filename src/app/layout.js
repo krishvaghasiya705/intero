@@ -2,16 +2,31 @@
 import Footer from "@/common/footer";
 import Header from "@/common/header";
 import "./globals.scss";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import initBarba from "@/utils/transitions";
 
 function BarbaWrapper({ children }) {
+  const [isClient, setIsClient] = useState(false);
+
   useEffect(() => {
+    setIsClient(true);
     // Initialize Barba after component mount
     if (typeof window !== 'undefined') {
       initBarba();
     }
   }, []);
+
+  if (!isClient) {
+    return (
+      <div>
+        <Header />
+        <main>
+          {children}
+        </main>
+        <Footer />
+      </div>
+    );
+  }
 
   return (
     <div data-barba="wrapper">
