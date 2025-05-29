@@ -1,15 +1,20 @@
 "use client"
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import barba from '@barba/core';
 import gsap from 'gsap';
 
 export default function BarbaWrapper({ children, namespace }) {
+  const wrapperRef = useRef(null);
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
     setIsMounted(true);
+  }, []);
 
-    // Initialize Barba
+  useEffect(() => {
+    if (!isMounted || !wrapperRef.current) return;
+
+    // Initialize Barba only after wrapper is present
     barba.init({
       wrapper: '[data-barba="wrapper"]',
       container: '[data-barba="container"]',
@@ -174,7 +179,7 @@ export default function BarbaWrapper({ children, namespace }) {
         style.parentNode.removeChild(style);
       }
     };
-  }, []); // Empty dependency array since we only want to initialize once
+  }, [isMounted]);
 
   // During SSR or initial client render, return children without Barba wrapper
   if (!isMounted) {
@@ -182,7 +187,7 @@ export default function BarbaWrapper({ children, namespace }) {
   }
 
   return (
-    <div data-barba="wrapper">
+    <div data-barba="wrapper" ref={wrapperRef}>
       <div data-barba="container" data-barba-namespace={namespace}>
         {children}
       </div>
