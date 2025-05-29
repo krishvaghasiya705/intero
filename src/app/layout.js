@@ -3,7 +3,7 @@ import Footer from "@/common/footer";
 import Header from "@/common/header";
 import "./globals.scss";
 import { useEffect } from "react";
-import { initBarba } from "@/utils/transitions";
+import initBarba from "@/utils/transitions";
 
 function BarbaWrapper({ children }) {
   useEffect(() => {
@@ -44,9 +44,7 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body>
-        <BarbaWrapper>
-          {children}
-        </BarbaWrapper>
+        <BarbaWrapper>{children}</BarbaWrapper>
       </body>
     </html>
   );
